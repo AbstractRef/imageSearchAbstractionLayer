@@ -35,8 +35,14 @@ app.route('/_api/package.json')
     });
   });
 
-app.route('/test').get(function(req, res, next) {
-client.search('walking dead',{page: 2})
+app.route('/test:offset').get(function(req, res, next) {
+  console.log(req);
+  var offset = parseInt( req.param.offset) +0;
+  console.log("offset ", req.param.offset);
+  if(offset<=0){
+  offset=1;
+  }
+client.search('walking dead',{page: offset})
 	.then(images => {
 /*
 		[
