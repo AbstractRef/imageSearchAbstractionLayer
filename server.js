@@ -36,7 +36,7 @@ app.route('/_api/package.json')
   });
 
 app.route('/test').get(function(req, res, next) {
-client.search('walking dead')
+client.search('walking dead',{page: 2})
 	.then(images => {
 /*
 		[
