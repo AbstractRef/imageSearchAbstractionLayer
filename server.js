@@ -35,14 +35,15 @@ app.route('/_api/package.json')
     });
   });
 
-app.route('/test:offset').get(function(req, res, next) {
-  console.log(req);
-  var offset = parseInt( req.param.offset) +0;
-  console.log("offset ", req.param.offset);
-  if(offset<=0){
-  offset=1;
+app.route('/test').get(function(req, res, next) {
+  
+  var offset = parseInt( req.param('offset')) +0;
+  if(offset == undefined || offset == NaN){
+    offset = 1;
   }
-client.search('walking dead',{page: offset})
+  console.log("offset ", offset);
+
+  client.search('walking dead',{page: offset})
 	.then(images => {
 /*
 		[
