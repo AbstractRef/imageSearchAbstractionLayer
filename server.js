@@ -7,6 +7,8 @@
 
 var fs = require('fs');
 var express = require('express');
+const GoogleImages = require('google-images');
+const client = new GoogleImages(process.env.CSE_KEY, process.env.GOOGLEAPI_KEY);
 var app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -32,6 +34,34 @@ app.route('/_api/package.json')
       res.type('txt').send(data.toString());
     });
   });
+
+app.route('/test').get(function(req, res, next) {
+client.search('Steve Angello')
+	.then(images => {
+  console.log("returned from promise")
+		/*
+		[{
+			"url": "http://steveangello.com/boss.jpg",
+			"type": "image/jpeg",
+			"width": 1024,
+			"height": 768,
+			"size": 102451,
+			"thumbnail": {
+				"url": "http://steveangello.com/thumbnail.jpg",
+				"width": 512,
+				"height": 512
+			}
+		}]
+		 */
+res.send(JSON.stringify(images));
+	}).catch(err => {
+  res.send(err);
+})
+});
+
+
+
+
   
 app.route('/')
     .get(function(req, res) {
