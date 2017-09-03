@@ -5,7 +5,9 @@
 **User Story:** I can paginate through the responses by adding a ?offset=2 parameter to the URL.  
   
 **User Story:** I can get a list of the most recently submitted search strings.  
-<https://cryptic-ridge-9197.herokuapp.com/api/imagesearch/lolcats%20funny?offset=10>  
+* <https://heather-flare.glitch.me/search/free%20code%20camp>  
+* <https://heather-flare.glitch.me/search/free%20code%20camp?offset=3>  
+* <https://heather-flare.glitch.me/recent>
 
 ```JSON
 [{

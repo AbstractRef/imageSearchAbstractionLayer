@@ -59,9 +59,6 @@ function storeSearchDetail(searchTerm, page) {
 function getRecentSearches() {
   var returnObjMap = {};
     return new Promise(function(resolve, reject) {
-      
-      
-      
         getDb().collection(collection)
             .find()
             .sort({date: -1})
@@ -78,7 +75,6 @@ function getRecentSearches() {
                     resolve({"Warning": "No Search Results Returned"});
                 }
             });
-
     });
 }
 
