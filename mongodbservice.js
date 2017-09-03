@@ -62,6 +62,7 @@ function getRecentSearches() {
 }
 
 var mongodbSeachDatastore = {
+    connect: connect,
     storeSearchDetail: storeSearchDetail,
     getRecentSearches: getRecentSearches
 };

@@ -2,7 +2,7 @@
 <html>
 
    <head>
-      <title>Backend Challenges | Free Code Camp</title>
+      <title>Free Code Camp : Image Search Abstraction Layer</title>
       <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
       <link href="/public/style.css" rel="stylesheet" type="text/css">
@@ -10,8 +10,40 @@
 
    <body>
       <div class="container">
-         <h1>Manage Node.js projects and npm packages using package.json</h1>
-         <h3>Part 1 of Free Code Camp Backend Challenges</h3>
+         <h1>Free Code Camp : Image Search Abstraction Layer</h1>
+         
+        <p>
+        <b>User Story:</b> I can get the image URLs, alt text and page urls for a set of images relating to a given search string.  
+        </p>
+        <p>
+        <b>User Story:</b> I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+        </p>
+        <p>
+        <b>User Story:</b> I can get a list of the most recently submitted search strings.
+        </p>
+        <ul>
+          <li><a href="https://heather-flare.glitch.me/search/free code camp?offset=3">https://heather-flare.glitch.me/search/free code camp</a></li>
+          <li><a href="https://heather-flare.glitch.me/search/free code camp?offset=3">https://heather-flare.glitch.me/search/free code camp?offset=3</a></li>
+          <li><a href="https://heather-flare.glitch.me/recent">https://heather-flare.glitch.me/recent</a></li>
+        </ul>
+        
+<code>
+[{<br>
+  type: "image/jpeg",<br>
+  width: 3600,<br>
+  height: 2403,<br>
+  size: 1047219,<br>
+  url: "http://static2.businessinsider.com/image/56bb5129dd08958c148b470a-3600-2403/the-walking-dead-zombies.jpg",<br>
+  thumbnail: {<br>
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpurq3kfA3kvVA62f595fiaaPoZro8bKfxGDug__6X5Q0iqRtQLpR8pqf",<br>
+    width: 150,<br>
+    height: 100<br>
+  },<br>
+  description: "The Walking Dead' used zombie dentures with blood in mid-season ...",<br>
+  parentPage: "http://www.businessinsider.com/walking-dead-zombie-dentures-mid-season-premiere-2016-2"<br>
+}]<br>
+        </code>
+        
       </div>
    </body>
 

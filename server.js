@@ -43,7 +43,7 @@
          offset = parseInt(req.param('offset'));
      }
 
-     mongodbService.storeSearchDetail(searchTerm);
+     mongodbService.storeSearchDetail(searchTerm, offset);
 
      client.search(searchTerm, {
              page: offset
@@ -86,5 +86,5 @@
 
  app.listen(process.env.PORT, function() {
    mongodbService.connect();
-     console.log('Node.js listening ...');
+   console.log('Node.js listening ...');
  });
