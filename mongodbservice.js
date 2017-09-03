@@ -43,22 +43,43 @@ function get() {
     return state.record;
 }
 
-function storeSearchDetail(searchTerm) {
-  console.log("add");
+function storeSearchDetail(searchTerm, page) {
+  state.record = {
+        "searchTerm": searchTerm,
+        "page": page,
+        "date": new Date()
+    }
 
+    getDb().collection(collection)
+        .insert(state.record, function(err, data) {
+            if (err) throw err
+        });
 }
 
 function getRecentSearches() {
-  console.log("history");
-   return new Promise(function(resolve, reject) {
-     //get from database
-    resolve( {
-        "search": "test",
-        "date": "1/1/17"
-    });
+  var returnObjMap = {};
+    return new Promise(function(resolve, reject) {
+      
+      
+      
+        getDb().collection(collection)
+            .find()
+            .sort({date: -1})
+            .limit(100)
+            .toArray(function(err, doc) {
+                if (err) {
+                    reject(err);
+                }
+                if (doc.length > 0) {
+                    state.record = doc;
+                    resolve(state.record);
+                } else {
+                    state.record = null;
+                    resolve({"Warning": "No Search Results Returned"});
+                }
+            });
 
     });
-  
 }
 
 var mongodbSeachDatastore = {
