@@ -8,8 +8,8 @@
  var express = require('express');
  const GoogleImages = require('google-images');
  const client = new GoogleImages(process.env.CSE_KEY, process.env.GOOGLEAPI_KEY);
- var mongodbService = require('./mongodbService').mongoSearchDatastore;
  var app = express();
+ var mongodbService = require('./mongodbservice').mongodbSeachDatastore;
 
  if (!process.env.DISABLE_XORIGIN) {
      app.use(function(req, res, next) {
@@ -85,5 +85,6 @@
  })
 
  app.listen(process.env.PORT, function() {
+   mongodbService.connect();
      console.log('Node.js listening ...');
  });

@@ -44,21 +44,28 @@ function get() {
 }
 
 function storeSearchDetail(searchTerm) {
+  console.log("add");
 
 }
 
 function getRecentSearches() {
-    return {
+  console.log("history");
+   return new Promise(function(resolve, reject) {
+     //get from database
+    resolve( {
         "search": "test",
         "date": "1/1/17"
-    };
+    });
+
+    });
+  
 }
 
-var mongoSeachDatastore = {
+var mongodbSeachDatastore = {
     storeSearchDetail: storeSearchDetail,
     getRecentSearches: getRecentSearches
 };
 
 module.exports = {
-    mongoSeachDatastore: mongoSeachDatastore
+    mongodbSeachDatastore: mongodbSeachDatastore
 };
