@@ -35,40 +35,30 @@ app.route('/_api/package.json')
     });
   });
 
-app.route('/test').get(function(req, res, next) {
+app.route('/search/:searchTerm').get(function(req, res, next) {
+  var searchTerm = req.params.searchTerm;
+  var offset = 1;
   
-  var offset = parseInt( req.param('offset')) +0;
-  if(offset == undefined || offset == NaN){
-    offset = 1;
+  if (parseInt( req.param('offset'))) {
+    offset = parseInt(req.param('offset'));
   }
-  console.log("offset ", offset);
-
-  client.search('walking dead',{page: offset})
+  
+  console.log("search term ", searchTerm);
+  console.log("Offset ", offset);
+  
+  //mongodbService.storeSearchDeta
+  
+  client.search(searchTerm,{page: offset})
 	.then(images => {
-/*
-		[
-    {
-      type: "image/jpeg",
-      width: 3600,
-      height: 2403,
-      size: 1047219,
-      url: "http://static2.businessinsider.com/image/56bb5129dd08958c148b470a-3600-2403/the-walking-dead-zombies.jpg",
-      thumbnail: {
-        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpurq3kfA3kvVA62f595fiaaPoZro8bKfxGDug__6X5Q0iqRtQLpR8pqf",
-        width: 150,
-        height: 100
-      },
-      description: "The Walking Dead' used zombie dentures with blood in mid-season ...",
-      parentPage: "http://www.businessinsider.com/walking-dead-zombie-dentures-mid-season-premiere-2016-2"
-    }
-    ]
-*/
-    res.send(JSON.stringify(images));
+    res.end(JSON.stringify(images));
   }).catch(err => {
-    res.send(err);
+    res.end(err);
   })
 });
 
+app.route('/recent').get(function(req, res, next){
+  
+})
 
 
 
